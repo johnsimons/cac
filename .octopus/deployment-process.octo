@@ -37,6 +37,21 @@ steps "Run a kubectl CLI Script" {
         }
     }
 
+    actions "Run a Script3" {
+        action_type = "Octopus.Script"
+        condition = "Success"
+        is_disabled = false
+        is_required = false
+        worker_pool_variable = ""
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Inline"
+            Octopus_Action_Script_Syntax = "PowerShell"
+            Octopus_Action_Script_ScriptBody = "gfhgfh"
+        }
+    }
+
     properties {
         Octopus_Action_TargetRoles = "coul"
     }
@@ -56,6 +71,25 @@ steps "Deploy raw Kubernetes YAML" {
         properties {
             Octopus_Action_Script_ScriptSource = "Inline"
         }
+    }
+
+    actions "Run a Script2" {
+        action_type = "Octopus.Script"
+        condition = "Success"
+        is_disabled = false
+        is_required = false
+        worker_pool_variable = ""
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Inline"
+            Octopus_Action_Script_Syntax = "PowerShell"
+            Octopus_Action_Script_ScriptBody = "bgnvb"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "cloud"
     }
 }
 
