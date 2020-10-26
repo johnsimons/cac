@@ -75,6 +75,7 @@ steps "Run an Azure Script" {
             Octopus_Action_Script_Syntax = "PowerShell"
             Octopus_Action_Azure_AccountId = "cloud"
             Octopus_Action_Script_ScriptBody = "#"
+            Octopus_Action_EnabledFeatures = "Octopus.Features.SubstituteInFiles"
         }
     }
 }
