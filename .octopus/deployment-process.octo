@@ -172,3 +172,40 @@ steps "Deploy a Package" {
         Octopus_Action_TargetRoles = "deploy"
     }
 }
+
+steps "Deploy a Package - clone (1)" {
+    condition = "Success"
+    package_requirement = "LetOctopusDecide"
+    start_trigger = "StartAfterPrevious"
+
+    actions "Deploy a Package - clone (1)" {
+        action_type = "Octopus.TentaclePackage"
+        condition = "Success"
+        is_disabled = false
+        is_required = false
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "WindowsService1"
+
+            properties {
+                SelectionMode = "immediate"
+            }
+        }
+
+        properties {
+            Octopus_Action_Package_AutomaticallyRunConfigurationTransformationFiles = "True"
+            Octopus_Action_Package_AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
+            Octopus_Action_EnabledFeatures = ",Octopus.Features.ConfigurationTransforms,Octopus.Features.ConfigurationVariables"
+            Octopus_Action_Package_PackageId = "WindowsService1"
+            Octopus_Action_Package_FeedId = "Octopus Server (built-in)"
+            Octopus_Action_Package_DownloadOnTentacle = "False"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "deploy"
+    }
+}
