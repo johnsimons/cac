@@ -9,6 +9,28 @@ steps "Run a Script" {
         is_disabled = false
         is_required = false
 
+        packages "hello-http" {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "hello-http"
+
+            properties {
+                Extract = "True"
+                SelectionMode = "immediate"
+            }
+        }
+
+        packages "NlogTransform" {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "NlogTransform"
+
+            properties {
+                Extract = "True"
+                SelectionMode = "immediate"
+            }
+        }
+
         properties {
             Octopus_Action_RunOnServer = "true"
             Octopus_Action_Script_ScriptSource = "Inline"
@@ -111,5 +133,42 @@ steps "Run an Azure Script" {
             Octopus_Action_Script_ScriptBody = "#"
             Octopus_Action_EnabledFeatures = "Octopus.Features.SubstituteInFiles"
         }
+    }
+}
+
+steps "Deploy a Package" {
+    condition = "Success"
+    package_requirement = "LetOctopusDecide"
+    start_trigger = "StartAfterPrevious"
+
+    actions "Deploy a Package" {
+        action_type = "Octopus.TentaclePackage"
+        condition = "Success"
+        is_disabled = false
+        is_required = false
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "WindowsService1"
+
+            properties {
+                SelectionMode = "immediate"
+            }
+        }
+
+        properties {
+            Octopus_Action_Package_AutomaticallyRunConfigurationTransformationFiles = "True"
+            Octopus_Action_Package_AutomaticallyUpdateAppSettingsAndConnectionStrings = "True"
+            Octopus_Action_EnabledFeatures = ",Octopus.Features.ConfigurationTransforms,Octopus.Features.ConfigurationVariables"
+            Octopus_Action_Package_PackageId = "WindowsService1"
+            Octopus_Action_Package_FeedId = "Octopus Server (built-in)"
+            Octopus_Action_Package_DownloadOnTentacle = "False"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "deploy"
     }
 }
