@@ -1,0 +1,19 @@
+steps "Run a Script" {
+
+    actions "Run a Script" {
+        action_type = "Octopus.Script"
+        channels = ["fgfdg"]
+        worker_pool_variable = ""
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Inline"
+            Octopus_Action_Script_Syntax = "PowerShell"
+            Octopus_Action_Script_ScriptBody = "#"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "deploy"
+    }
+}
