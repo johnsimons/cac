@@ -2,7 +2,7 @@ steps "Run a Script" {
 
     actions "Run a Script" {
         action_type = "Octopus.Script"
-        channels = ["fgfdg"]
+        channels = ["Beta"]
         worker_pool_variable = ""
 
         properties {
