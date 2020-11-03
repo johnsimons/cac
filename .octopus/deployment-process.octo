@@ -17,3 +17,22 @@ steps "Run a Script" {
         Octopus_Action_TargetRoles = "deploy"
     }
 }
+
+steps "Run a Script no channel" {
+
+    actions "Run a Script no channel" {
+        action_type = "Octopus.Script"
+        worker_pool_variable = ""
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Inline"
+            Octopus_Action_Script_Syntax = "PowerShell"
+            Octopus_Action_Script_ScriptBody = "echo $test"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "deploy"
+    }
+}
