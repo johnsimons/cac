@@ -5,6 +5,17 @@ steps "Run a Script from cac test again" {
         channels = ["Beta"]
         worker_pool_variable = ""
 
+        packages "hello-http" {
+            acquisition_location = "Server"
+            feed_id_or_name = "Octopus Server (built-in)"
+            package_id = "hello-http"
+
+            properties {
+                Extract = "True"
+                SelectionMode = "immediate"
+            }
+        }
+
         properties {
             Octopus_Action_RunOnServer = "false"
             Octopus_Action_Script_ScriptSource = "Inline"
