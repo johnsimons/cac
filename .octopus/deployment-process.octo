@@ -53,6 +53,6 @@ steps "My new step" {
     }
 
     properties {
-        Octopus_Action_TargetRoles = "cloud"
+        Octopus_Action_TargetRoles = "deploy"
     }
 }
