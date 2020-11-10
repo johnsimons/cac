@@ -1,6 +1,6 @@
-steps "Run a Script" {
+steps "Run a Script with warning" {
 
-    actions "Run a Script" {
+    actions "Run a Script with warning" {
         action_type = "Octopus.Script"
         channels = ["Beta"]
         worker_pool_variable = ""
