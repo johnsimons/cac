@@ -1,6 +1,6 @@
-steps "Run a Script from cac test again" {
+steps "Run a Script from cac test again goal" {
 
-    actions "Run a Script from cac test again" {
+    actions "Run a Script from cac test again goal" {
         action_type = "Octopus.Script"
         channels = ["Beta"]
         worker_pool_variable = ""
