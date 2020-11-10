@@ -37,3 +37,22 @@ steps "Run a Script no channel" {
         Octopus_Action_TargetRoles = "deploy"
     }
 }
+
+steps "My new step" {
+
+    actions "My new step" {
+        action_type = "Octopus.Script"
+        worker_pool_variable = ""
+
+        properties {
+            Octopus_Action_RunOnServer = "false"
+            Octopus_Action_Script_ScriptSource = "Inline"
+            Octopus_Action_Script_Syntax = "PowerShell"
+            Octopus_Action_Script_ScriptBody = "#"
+        }
+    }
+
+    properties {
+        Octopus_Action_TargetRoles = "cloud"
+    }
+}
