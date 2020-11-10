@@ -34,7 +34,7 @@ steps "Run a Script no channel" {
     actions "Run a Script no channel" {
         action_type = "Octopus.Script"
         channels = ["delta"]
-        notes = "hello world"
+        notes = "hello world2"
         worker_pool_variable = ""
 
         properties {
